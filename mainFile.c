@@ -3,27 +3,19 @@
 
 main(void){
     WelcomeScreen();
-	Title();
 	LoginScreen();
 }
 void WelcomeScreen(){
-	printf("\n\n\n\n\n\n\n\t\t\t\t#########################################");
-	printf("\n\t\t\t\t#\t\t WELCOME TO\t\t#");
-	printf("\n\t\t\t\t#   Shifa HOSPITAL MANAGEMENT SYSTEM    #");
-	printf("\n\t\t\t\t#########################################");
+	printf("\n\n\n\n\n\n\n\t\t\t\t\t\t\t WELCOME TO\t\t");
+	printf("\n\t\t\t\t\t   Shifa HOSPITAL MANAGEMENT SYSTEM");
 	printf("\n\n\n\n\n Press any key to continue......\n");
 	getch();
 	system("cls");
 }
-void Title(){
-	printf("\n\n\t\t----------------------------------------------------------------------------------");
-	printf("\n\t\t\t\t       Shifa HOSPITAL - Gaza        ");
-	printf("\n\t\t----------------------------------------------------------------------------------");
-}
+
 void MainMenu(){
 	system("cls");
 	int choose;
-	Title();
 	printf("\n\n\n\n\n\t\t\t\t1. Add Patients Record\n");
 	printf("\n\t\t\t\t2. List Patients Record\n");
 	printf("\n\t\t\t\t3. Search Patients Record\n");
@@ -52,14 +44,13 @@ void MainMenu(){
 }
 void ex_it(){
 	system("cls");
-	Title();
 	printf("\n\n\n\n\n\t\t\tTHANK YOU FOR VISITING :)");
 	getch();	
 }
 
 void LoginScreen(){
 	int e=0;
-	char Username[15], Password[15], original_Password[15]="123", original_Username[25]="hatem";
+	char Username[15], Password[15], original_Password[15]="system", original_Username[25]="system";
 	do {
 		printf("\n\n\n\n\t\t\t\tEnter your Username and Password :)");
 		printf("\n\n\n\t\t\t\t\tUSERNAME:");
@@ -88,7 +79,6 @@ void LoginScreen(){
 void Add_rec()
 {
 	system("cls");
-	Title();
 	char ans;
 	FILE*ek;
 	ek = fopen("Record2.dat","a");
@@ -185,36 +175,24 @@ do{
 	D:
     printf("\n\t\t\tContact no: ");
     scanf("%s",p.Contact_no);
-    if(strlen(p.Contact_no)>10||strlen(p.Contact_no)!=10){
-		printf("\n\t Sorry :( Invalid. Contact no. must contain 10 numbers. Enter again :)");
+	for (b=0;b<strlen(p.Contact_no);b++){
+		if (!isalpha(p.Contact_no[b])){
+			valid=1;
+		}
+		else{
+			valid=0;
+			break;
+		}
+	}
+	if(!valid){
+		printf("\n\t\t Contact no. contain Invalid character :(  Enter again :)");
 		goto D;
 	}
-	else{
-		for (b=0;b<strlen(p.Contact_no);b++){
-			if (!isalpha(p.Contact_no[b])){
-				valid=1;
-			}
-			else{
-				valid=0;
-				break;
-			}
-		}
-		if(!valid){
-			printf("\n\t\t Contact no. contain Invalid character :(  Enter again :)");
-			goto D;
-		}
-	}
+	
 }while(!valid);
 
-do
-{
     printf("\n\t\t\tEmail: ");
     scanf("%s",p.Email);
-    if (strlen(p.Email)>30||strlen(p.Email)<8)
-    {
-       printf("\n\t Invalid :( \t The max range for email is 30 and min range is 8 :)");	
-	}
-} while(strlen(p.Email)>30||strlen(p.Email)<8);
     E:
     printf("\n\t\t\tProblem: ");
     scanf("%s",p.Problem);
@@ -286,7 +264,6 @@ void func_list()
 {
 	int row;
 	system("cls");
-	Title();
 	FILE *ek;
 	ek=fopen("Record2.dat","r");
 	printf("\n\n\t\t\t!!!!!!!!!!!!!! List Patients Record !!!!!!!!!!!!!\n");
@@ -337,7 +314,6 @@ void Search_rec(void)
 {
 	char name[20];
 	system("cls");
-	Title();
 	FILE *ek;
 	ek=fopen("Record2.dat","r");
 	printf("\n\n\t\t\t!!!!!!!!!!!!!! Search Patients Record !!!!!!!!!!!!!\n");
@@ -365,7 +341,7 @@ void Search_rec(void)
 			gotoxy(80,15);
 			printf("Problem");
 			gotoxy(95,15);
-			printf("Prescribed Doctor\n");
+			printf("Doctor\n");
 			printf("=================================================================================================================");
 			gotoxy(1,18);
 			printf("%s %s",p.First_Name, p.Last_Name);
@@ -416,7 +392,6 @@ void Edit_rec(){
 	int i,b, valid=0;
 	char ch, name[20];
 	system("cls");
-	Title();
  	ft=fopen("temp2.dat","w+");
 	ek=fopen("Record2.dat","r");
 	if(ek==NULL){
@@ -499,7 +474,6 @@ void Dlt_rec(){
 	char name[20];
 	int found=0;
 	system("cls");
-	Title();
 	FILE *ek, *ft;
 	ft=fopen("temp_file2.dat","w+");
 	ek=fopen("Record2.dat","r");
