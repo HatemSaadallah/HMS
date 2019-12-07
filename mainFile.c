@@ -77,48 +77,38 @@ void LoginScreen(){
 			getch();
 		}} while(e<=2);
 	
-		if(e>2)
-		{
+		if(e>2){
 		printf("You have cross the limit. You cannot login. :( :(");
 		getch();
-	    ex_it();
-		}
+	    ex_it();}
 	system("cls");
 }
-void Add_rec()
-{
+void Add_rec(){
 	system("cls");
 	Title();
 	char ans;
 	FILE*ek;
 	ek = fopen("Record2.dat","a");
 	printf("\n\n\t\t\t!!!!!!!!!!!!!! Add Patients Record !!!!!!!!!!!!!\n");
-	
 	A:
 	printf("\n\t\t\tFirst Name: ");
 	scanf("%s",p.First_Name);
 	p.First_Name[0]=toupper(p.First_Name[0]);
-	if(strlen(p.First_Name)>20||strlen(p.First_Name)<2)
-	{
+	if(strlen(p.First_Name)>20||strlen(p.First_Name)<2){
 		printf("\n\t Invalid :( \t The max range for first name is 20 and min range is 2 :)");
 		goto A;
 	}
-	else
-	{
-		for (b=0;b<strlen(p.First_Name);b++)
-		{
-			if (isalpha(p.First_Name[b]))
-			{
+	else{
+		for (b=0;b<strlen(p.First_Name);b++){
+			if (isalpha(p.First_Name[b])){
 				valid=1;
 			}
-			else
-			{
+			else{
 				valid=0;
 				break;
 			}
 		}
-		if(!valid)
-		{
+		if(!valid){
 			printf("\n\t\t First name contain Invalid character :(  Enter again :)");
 			goto A;
 		}
@@ -127,27 +117,20 @@ void Add_rec()
 	printf("\n\t\t\tLast Name: ");
     scanf("%s",p.Last_Name);
     p.Last_Name[0]=toupper(p.Last_Name[0]);
-    if(strlen(p.Last_Name)>20||strlen(p.Last_Name)<2)
-	{
+    if(strlen(p.Last_Name)>20||strlen(p.Last_Name)<2){
 		printf("\n\t Invalid :( \t The max range for last name is 20 and min range is 2 :)");
 		goto B;
 	}
-	else
-	{
-		for (b=0;b<strlen(p.Last_Name);b++)
-		{
-			if (isalpha(p.Last_Name[b]))
-			{
+	else{
+		for (b=0;b<strlen(p.Last_Name);b++){
+			if (isalpha(p.Last_Name[b])){
 				valid=1;
 			}
-			else
-			{
+			else{
 				valid=0;
 				break;
-			}
-		}
-		if(!valid)
-		{
+			}}
+		if(!valid){
 			printf("\n\t\t Last name contain Invalid character :(  Enter again :)");
 			goto B;
 		}
@@ -206,8 +189,7 @@ do{
 	}
 }while(!valid);
 
-do
-{
+do{
     printf("\n\t\t\tEmail: ");
     scanf("%s",p.Email);
     if (strlen(p.Email)>30||strlen(p.Email)<8)
@@ -333,8 +315,7 @@ void func_list()
 		getch();
 		MainMenu();
 }
-void Search_rec(void)
-{
+void Search_rec(void){
 	char name[20];
 	system("cls");
 	Title();
@@ -348,8 +329,7 @@ void Search_rec(void)
 	name[0]=toupper(name[0]);
 	while(fscanf(ek,"%s %s %c %i %s %s %s %s %s\n", p.First_Name, p.Last_Name, &p.Gender, &p.age, p.Address, p.Contact_no, p.Email, p.Problem, p.Doctor)!=EOF)
 	{
-		if(strcmp(p.First_Name,name)==0)
-		{
+		if(strcmp(p.First_Name,name)==0){
 			gotoxy(1,15);
 			printf("Full Name");
 			gotoxy(25,15);
