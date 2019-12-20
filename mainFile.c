@@ -392,7 +392,7 @@ void Edit_rec(){
 	int i,b, valid=0;
 	char ch, name[20];
 	system("cls");
- 	ft=fopen("temp2.dat","w+");
+ 	ft=fopen("Record3.dat","w+");
 	ek=fopen("Record2.dat","r");
 	if(ek==NULL){
 		printf("\n\t Can not open file!! ");
@@ -466,7 +466,7 @@ void Edit_rec(){
 	   fclose(ft);
 	   fclose(ek);
 	   remove("Record2.dat");
-   	   rename("temp2.dat","Record2.dat");
+   	   rename("Record3.dat","Record2.dat");
 		getch();
 		MainMenu();		
 }
@@ -475,7 +475,7 @@ void Dlt_rec(){
 	int found=0;
 	system("cls");
 	FILE *ek, *ft;
-	ft=fopen("temp_file2.dat","w+");
+	ft=fopen("Record3.dat","w+");
 	ek=fopen("Record2.dat","r");
 	printf("\n\n\t\t\t!!!!!!!!!!!!!! Delete Patients Record !!!!!!!!!!!!!\n");
 	gotoxy(12,8);
