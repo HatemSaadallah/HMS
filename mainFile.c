@@ -142,7 +142,7 @@ void Add_rec()
 			goto B;
 		}
 	}
-/* ******************************************* Gender ************************************************************** */	    
+
 	do{
 	    printf("\n\t\t\tGender[F/M]: ");
 		scanf(" %c",&p.Gender);
@@ -156,10 +156,10 @@ void Add_rec()
 	    	printf("\n\t\t Gender contain Invalid character :(  Enter either F or M :)");
     	}
 	 }	while(!ok);
-/* ***************************************** Age ********************************************************************** */	
+
     printf("\n\t\t\tAge:");
     scanf(" %d",&p.age);
-/* **************************************** Address ******************************************************************* */    
+
     do{
     C:
     printf("\n\t\t\tAddress: ");
@@ -170,7 +170,7 @@ void Add_rec()
 		goto C;
 	}	
 }while(!valid);
-/* ******************************************* Contact no. ***************************************** */
+
 do{
 	D:
     printf("\n\t\t\tContact no: ");
@@ -190,9 +190,23 @@ do{
 	}
 	
 }while(!valid);
-
+	khaled:
     printf("\n\t\t\tEmail: ");
+    int mm;
     scanf("%s",p.Email);
+    int valiid = 0;
+    for (mm = 0; mm < strlen(p.Email); mm++){
+    	if(!isalpha(p.Email[mm])){
+    		valiid = 1;
+    		break;
+		} else{
+			valiid = 0;
+		}
+	}
+	if (valiid != 1){
+		printf("\t\t\t\tEnter a valid email");
+		goto khaled;
+	}
     E:
     printf("\n\t\t\tProblem: ");
     scanf("%s",p.Problem);
@@ -324,8 +338,7 @@ void Search_rec(void)
 	name[0]=toupper(name[0]);
 	while(fscanf(ek,"%s %s %c %i %s %s %s %s %s\n", p.First_Name, p.Last_Name, &p.Gender, &p.age, p.Address, p.Contact_no, p.Email, p.Problem, p.Doctor)!=EOF)
 	{
-		if(strcmp(p.First_Name,name)==0)
-		{
+		if(strcmp(p.First_Name,name)==0){
 			gotoxy(1,15);
 			printf("Full Name");
 			gotoxy(25,15);
@@ -502,7 +515,7 @@ void Dlt_rec(){
 		fclose(ek);
 		fclose(ft);
 		remove("Record2.dat");
-		rename("temp_file2.dat","Record2.dat");
+		rename("Record3.dat","Record2.dat");
 		printf("\n\n\t\t\t Record deleted successfully :) ");
 		getch();
 		MainMenu();
